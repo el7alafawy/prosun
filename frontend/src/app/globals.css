@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans bg-surface text-ink antialiased;
+    direction: rtl;
+    text-align: right;
+  }
+  /* Sticky-header offset for in-page anchors */
+  [id] {
+    scroll-margin-top: 100px;
+  }
+}
+
+@layer components {
+  .container-prosun {
+    @apply mx-auto w-full max-w-[1240px] px-6;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-bold border-2 border-transparent transition-all duration-300 ease-smooth whitespace-nowrap;
+  }
+  .btn-primary {
+    @apply bg-accent text-white shadow-accent hover:bg-accent-dark hover:-translate-y-0.5 hover:shadow-accentLg;
+  }
+  .btn-outline {
+    @apply bg-transparent text-white border-white/50 hover:bg-white hover:text-primary hover:border-white;
+  }
+  .btn-light {
+    @apply bg-white text-primary hover:bg-accent hover:text-white;
+  }
+  .btn-sm {
+    @apply px-5 py-2.5 text-sm;
+  }
+  .btn-lg {
+    @apply px-9 py-4 text-base;
+  }
+  .btn-block {
+    @apply w-full justify-center;
+  }
+
+  .section-eyebrow {
+    @apply inline-block text-accent font-bold text-sm tracking-wider mb-3.5 relative pr-10;
+  }
+  .section-eyebrow::before {
+    content: "";
+    @apply absolute right-0 top-1/2 w-7 h-0.5 bg-accent;
+  }
+  .section-eyebrow-center {
+    @apply pr-0;
+  }
+  .section-eyebrow-center::before {
+    display: none;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl lg:text-[42px] font-extrabold leading-tight text-primary mb-4;
+  }
+
+  .section-lead {
+    @apply text-ink-muted text-lg leading-loose max-w-[760px];
+  }
+
+  .highlight {
+    @apply text-accent;
+  }
+}
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
